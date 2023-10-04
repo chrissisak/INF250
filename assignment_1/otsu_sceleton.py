@@ -7,7 +7,7 @@ import numpy as np
 from skimage import io
 import matplotlib.pyplot as plt
 
-# Read image
+# Read imagexs
 image = io.imread('gingerbreads.jpg')
 
 def threshold(image, th=None):
@@ -16,7 +16,7 @@ def threshold(image, th=None):
     Binarises the image using a global threshold `th`. Uses Otsu's method
     to find optimal threshold value if the threshold variable is None. The
     returned image will be in the form of an 8-bit unsigned integer array
-    with 255 as white and 0 as black.
+    with 255 as white and 0 as black. 
 
     Parameters:
     -----------
@@ -110,14 +110,17 @@ new_image = threshold(image)
 fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 ax0, ax1, ax2 = axes.ravel()
 
+# Plots the original image
 ax0.imshow(image, cmap=plt.cm.gray)
 ax0.set_title('Original Image')
 
+# Plots histogram
 hist = histogram(image)
 ax1.plot(hist, color='black')
 ax1.set_title('Histogram')
 ax1.set_xlim([0, 256])
 
+# Plots the new edited image
 ax2.imshow(new_image, cmap=plt.cm.gray)
 ax2.set_title('Thresholded Image')
 
